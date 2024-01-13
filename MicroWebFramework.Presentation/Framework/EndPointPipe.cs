@@ -30,9 +30,9 @@ public class EndPointPipe : Pipe
             if (parameterItem.ParameterType.IsInterface)
             {
                 var implementedService = IocContainer.GetServiceImplementation(parameterItem.ParameterType);
-                if (implementedService is not null)
-                    constractorParameter.Add(implementedService);
-                else throw new NotImplementedException($"No implementation found for the {parameterItem.ParameterType.Name} service");
+                if (implementedService is null)
+                    throw new NotImplementedException($"No implementation found for the {parameterItem.ParameterType.Name} service");
+                constractorParameter.Add(implementedService);
             }
         }
 

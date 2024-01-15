@@ -25,6 +25,6 @@ public static class IocContainer
         if (service is null)
             throw new ArgumentNullException(nameof(service));
 
-        return _serviceProvider.GetService(service);
+        return _serviceProvider.GetRequiredService(service);
     }
 }
